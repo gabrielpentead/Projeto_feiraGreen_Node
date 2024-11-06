@@ -12,8 +12,7 @@ import Outro from "../pages/Outro";
 import Paginapd from "../pages/Paginapd";
 import SearchResults from '../pages/SearchResults';
 import Private from './Private'
-import Carrinho from '../pages/Carrinho'; 
-import Novopd from '../pages/Novopd';
+import Carrinho from '../pages/Carrinho';
 
 function RoutesApp(){
   return(
@@ -29,7 +28,6 @@ function RoutesApp(){
       <Route path="/paginapd/:id" element={<Private><Paginapd /></Private>} />
       <Route path="/search/:query" element={<Private><SearchResults /></Private>} />
       <Route path="/profile" element={<Private><Profile /></Private>} />
-      <Route path="/adicionar_novo" element={<Private><Novopd /></Private>} />
       <Route path="/carrinho" element={<Private><Carrinho /></Private>} />
     </Routes>
   )

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ProductFactory from '../factory/ProductFactory'; // Importa a classe ProductFactory
+import ProductFactory from '../factory/ProductFactory';
+import ProductList from '../Home/ProductList';
 
 function Outro() {
-    const outros = ProductFactory.createProductByType('outro'); // Substitua com o tipo correto
-
+    const outros = ProductFactory.createProductByType('outro');
     return (
         <div>
             <hr />
@@ -12,17 +11,9 @@ function Outro() {
                 <span className="categorias-titulo">Outros</span>
             </section>
             <hr />
-            <main className="row produto-page">
-                <div className="col-12">
-                    <div className="row">
-                        {outros.map(ProductFactory.renderProduct)}
-                    </div>
-                </div>
-            </main>
+            <ProductList products={outros} />
         </div>
     );
 }
 
 export default Outro;
-
-

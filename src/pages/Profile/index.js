@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FiSettings, FiUpload } from 'react-icons/fi';
+import { FiUpload } from 'react-icons/fi';
 import avatar from '../../assets/avatar.png';
 import { AuthContext } from '../../contexts/auth';
 import { db, storage } from '../../services/firebaseConnection';
@@ -81,11 +80,7 @@ export default function Profile() {
 
   return (
     <div>
-      
-
       <div className="content">
-        
-
         <div className="container">
           <form className="form-profile" onSubmit={handleSubmit}>
             <label className="label-avatar">
@@ -109,12 +104,6 @@ export default function Profile() {
 
             <button type="submit">Salvar</button>
           </form>
-        </div>
-
-        <div className="container">
-          <button>
-            <Link to="/adicionar_novo">Minhas Vendas</Link> 
-          </button>
         </div>
 
         <div className="container">

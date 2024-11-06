@@ -364,3 +364,67 @@ top: 30px;
     }
     
 }
+/* Centralizar a seção de produtos */
+.produto-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Centralizar o carrossel */
+.carousel-inner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+/* Centralização dos itens no carrossel */
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaço entre os itens do carrossel */
+}
+
+/* Estilo dos produtos dentro do carrossel */
+.produto-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 200px;
+    margin: 0 10px; /* Margem para espaçamento horizontal */
+}
+
+/* Ajuste de imagem dos produtos */
+.produto-product img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.produto-product img:hover {
+    transform: scale(1.05); /* Efeito de hover */
+}
+
+/* Texto do nome e preço do produto */
+.produto-product span {
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.price-product {
+    color: #12AF50;
+}
+
+
+
+

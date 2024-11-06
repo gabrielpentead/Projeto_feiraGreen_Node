@@ -1,11 +1,9 @@
-import React from 'react'; // Importa React
-import { Link } from 'react-router-dom'; // Importa Link para navegação
-import ProductFactory from '../factory/ProductFactory'; // Importa a classe ProductFactory
+import React from 'react';
+import ProductFactory from '../factory/ProductFactory';
+import ProductList from '../Home/ProductList';
 
 function Fruta() {
-    // Corrija o nome do método aqui
     const frutas = ProductFactory.createProductByType('fruta');
-
     return (
         <div>
             <hr />
@@ -13,13 +11,7 @@ function Fruta() {
                 <span className="categorias-titulo">Frutas</span>
             </section>
             <hr />
-            <main className="row produto-page">
-                <div className="col-12">
-                    <div className="row">
-                        {frutas.map(ProductFactory.renderProduct)}
-                    </div>
-                </div>
-            </main>
+            <ProductList products={frutas} />
         </div>
     );
 }

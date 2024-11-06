@@ -4,15 +4,20 @@
   border-radius: 5px;
   padding: 0.8em;
   align-items: center;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
   margin-bottom: 1em;
 }
+
 .container-center{
   display: flex;
   background-color: #f8f8f8;
   border-radius: 5px;
   padding: 0.8em;
   align-items: center;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
   margin-bottom: 1em;
+  width: 100%;
+  max-width: 800px; /* Limita a largura */
 }
 
 .label-avatar{
@@ -55,7 +60,7 @@
 .form-profile input, textarea, select{
   margin-bottom: 1em;
   padding: 0.7em;
-  border:0;
+  border: 0;
   border-radius: 5px;
   max-width: 600px;
 }
@@ -65,11 +70,14 @@
 }
 
 .form-profile button{
-  max-width: 600px;
+  max-width: 500px;
+  width: 100%; /* Garante que o botão "Salvar" ocupe toda a largura disponível */
+  padding: 10px 0; /* Deixa o botão com o mesmo tamanho */
 }
 
 .logout-btn{
-  padding: 8px 20px;
+  max-width: 350px;
+  padding: 5px 0; /* Ajusta a altura do botão */
   border: 1px solid #121212;
   background-color: #4CAF50;
   border-radius: 5px;
@@ -77,6 +85,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  margin-top: 1em; /* Distância do botão "Salvar" */
+  text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+.logout-btn:hover {
+  background-color: #45a049; /* Cor ao passar o mouse */
 }
 
 /* Inputs e Botões */

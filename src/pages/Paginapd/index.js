@@ -4,26 +4,21 @@ import { data } from '../../data';
 import { Link, useParams } from 'react-router-dom';
 
 function Paginapd() {
-  const { id } = useParams(); 
-  const productId = parseInt(id);  
-  const produto = data.find(product => product.id === productId); // encontra o produto específico no data que corresponde ao productId
-  const relatedProducts = data.filter(product => product.type === produto.type && product.id !== productId); // filtra os produtos relacionados ao produto acessado
+  const { id } = useParams();
+  const productId = parseInt(id);
+  const produto = data.find(product => product.id === productId);
+  const relatedProducts = data.filter(product => product.type === produto.type && product.id !== productId);
 
-  const [index, setIndex] = useState(0); 
+  const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
-  }; // atualiza o estado index quando o índice do carrossel muda.
+  };
 
   const addToCart = (product) => {
-    // Obter o carrinho existente do cookie
     const existingCart = getCartFromCookies();
-    
-    // Adicionar o novo produto ao carrinho
     existingCart.push(product);
-    
-    // Atualizar o cookie do carrinho
-    document.cookie = `cart=${JSON.stringify(existingCart)}; path=/; max-age=3600`; // O cookie expira em 1 hora
+    document.cookie = `cart=${JSON.stringify(existingCart)}; path=/; max-age=3600`;
     alert(`${product.name} foi adicionado ao carrinho!`);
   };
 
@@ -34,7 +29,13 @@ function Paginapd() {
   };
 
   if (!produto) {
-    return <div>Produto não encontrado.</div>; // Mensagem de erro se o produto não for encontrado
+    return <div>Produto não encontrado.</div>;
+  }
+
+  // Agrupa os produtos em conjuntos de 3
+  const groupedProducts = [];
+  for (let i = 0; i < relatedProducts.length; i += 3) {
+    groupedProducts.push(relatedProducts.slice(i, i + 3));
   }
 
   return (
@@ -57,29 +58,31 @@ function Paginapd() {
         </div>
       </div>
       <hr />
-      <div className="produto-page-product">
+      <div className="produto-page-product text-center">
         <div className="oucompre">
           <h3>Ou Compre Outros</h3>
         </div>
       </div>
       <section id="home" className="d-flex">
         <div className="container align-self-center">
-          <div className="row-product">
+          <div className="row justify-content-center">
             <div className="col-md-12 banner-container">
-              <Carousel activeIndex={index} onSelect={handleSelect}>
-                {relatedProducts.length > 0 ? (
-                  relatedProducts.map((product, idx) => (
+              <Carousel activeIndex={index} onSelect={handleSelect} indicators={false} controls={groupedProducts.length > 1}>
+                {groupedProducts.length > 0 ? (
+                  groupedProducts.map((group, idx) => (
                     <Carousel.Item key={idx}>
-                      <div className="d-flex justify-content-around">
-                        <div className="produto-product">
-                          <Link to={`/paginapd/${product.id}`}> 
-                            <img src={product.image} alt={product.name} className="img-fluid" />
-                          </Link>
-                          <span>{product.name}</span>
-                          <span>
-                            R$ <span className="price">{product.price}</span> <span className="unit">{product.unit}</span>
-                          </span>
-                        </div>
+                      <div className="d-flex justify-content-center">
+                        {group.map((product) => (
+                          <div key={product.id} className="produto-product mx-2 text-center">
+                            <Link to={`/paginapd/${product.id}`}>
+                              <img src={product.image} alt={product.name} className="img-fluid" />
+                            </Link>
+                            <span>{product.name}</span>
+                            <span>
+                              R$ <span className="price">{product.price}</span> <span className="unit">{product.unit}</span>
+                            </span>
+                          </div>
+                        ))}
                       </div>
                     </Carousel.Item>
                   ))
